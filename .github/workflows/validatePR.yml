@@ -1,0 +1,21 @@
+name: validatePR
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    branches:
+      - master
+
+concurrency:
+  group: validatePR
+  cancel-in-progress: true
+
+jobs:
+  validate-pull-request:
+    runs-on: ubuntu-latest
+
+  validate-branch:
+    runs-on: ubuntu-latest
+
+  validate-build:
+    runs-on: ubuntu-latest

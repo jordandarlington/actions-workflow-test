@@ -5,7 +5,8 @@
   "scripts": {
     "build": "tsc",
     "start": "ts-node src/index.ts",
-    "test": "jest"
+    "test": "jest",
+    "clean": "rm -rf dist && find tests -name '*.js' -delete"
   },
   "keywords": [],
   "author": "",

@@ -16,7 +16,7 @@ The below features span a range of topics from 'assistive' automation to 'full' 
 
 #### Templates
 
-- [ ] Pull Request
+- [x] Pull Request
 
 #### Validation Worflows
 

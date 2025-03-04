@@ -12,7 +12,7 @@ This repo is designed to demonstrate a range of available features that can be u
 
 ## Features
 
-The below features span a range of topics from 'assistive' automation to 'full' validation of multiple aspects within the development process.
+The below features include a range of topics from 'assistive' automation to 'full' validation of multiple aspects within the development process.
 
 #### Templates
 

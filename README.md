@@ -20,9 +20,9 @@ The below features span a range of topics from 'assistive' automation to 'full' 
 
 #### Validation Worflows
 
-- [ ] Pull Request
+- [x] Pull Request
 - [ ] Branch
-- [ ] Build
+- [x] Build
 
 
 ## License

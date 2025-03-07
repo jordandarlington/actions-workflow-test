@@ -35,6 +35,7 @@ jobs:
           echo "$(date "+%F %H:%M:%S") | Check Pull Request Description | END"
 
   validate-branch:
+    needs: validate-pull-request
     runs-on: ubuntu-latest
 
     steps:
@@ -46,6 +47,7 @@ jobs:
           echo "$(date "+%F %H:%M:%S") | Check Branch Integrity | END"
 
   validate-build:
+    needs: validate-branch
     runs-on: ubuntu-latest
 
     steps:

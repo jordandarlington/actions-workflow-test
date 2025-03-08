@@ -40,6 +40,18 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies
+        run: |
+          echo "$(date "+%F %H:%M:%S") | Install Dependencies | START"
+          npm install
+          echo "$(date "+%F %H:%M:%S") | Install Dependencies | END"
+        working-directory: ./actions/validate-branch
+
       - name: Check Branch Protection
         uses: jordandarlington/actions-workflow-test-core/actions/validate-branch@initial-test
         with:

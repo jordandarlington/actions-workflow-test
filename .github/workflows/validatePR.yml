@@ -40,11 +40,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - name: Check Branch Integrity
-        run: |
-          echo "$(date "+%F %H:%M:%S") | Check Branch Integrity | START"
-          echo "Branch: ${{ github.event.pull_request.head.ref }}"
-          echo "$(date "+%F %H:%M:%S") | Check Branch Integrity | END"
+      - name: Check Branch Protection
+        uses: jordandarlington/actions-workflow-test-core/actions/validate-branch
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          org-name: jordandarlington
+          repo-name: actions-workflow-test
+          base-branch: ${{ github.event.pull_request.base.ref }}
 
   validate-build:
     needs: validate-branch

@@ -50,7 +50,6 @@ jobs:
           echo "$(date "+%F %H:%M:%S") | Install Dependencies | START"
           npm install
           echo "$(date "+%F %H:%M:%S") | Install Dependencies | END"
-        working-directory: ./actions/validate-branch
 
       - name: Check Branch Protection
         uses: jordandarlington/actions-workflow-test-core/actions/validate-branch@initial-test

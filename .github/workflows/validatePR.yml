@@ -49,7 +49,7 @@ jobs:
           echo "$(date "+%F %H:%M:%S") | Install GitHub CLI | END"
 
       - name: Check Branch Protection
-        uses: jordandarlington/actions-workflow-test-core/actions/validate-branch@v0.1.7
+        uses: jordandarlington/actions-workflow-test-core/actions/validate-branch@v0.1.8
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           org-name: jordandarlington

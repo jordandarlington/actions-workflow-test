@@ -41,7 +41,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Check Branch Protection
-        uses: jordandarlington/actions-workflow-test-core/actions/validate-branch@v0.1.3
+        uses: jordandarlington/actions-workflow-test-core/actions/validate-branch@v0.1.4
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           org-name: jordandarlington

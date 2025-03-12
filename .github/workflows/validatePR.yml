@@ -51,7 +51,7 @@ jobs:
       - name: Check Branch Protection
         uses: jordandarlington/actions-workflow-test-core/actions/validate-branch@v0.1.9
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.ACTIONS_TOKEN }}
           org-name: jordandarlington
           repo-name: actions-workflow-test
           base-branch: ${{ github.event.pull_request.base.ref }}

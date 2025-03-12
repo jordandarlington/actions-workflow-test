@@ -39,19 +39,31 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-      - name: Check Branch Integrity
+      - name: Check Out Code
+        uses: actions/checkout@v4
+
+      - name: Install GitHub CLI
         run: |
-          echo "$(date "+%F %H:%M:%S") | Check Branch Integrity | START"
-          echo "Branch: ${{ github.event.pull_request.head.ref }}"
-          echo "$(date "+%F %H:%M:%S") | Check Branch Integrity | END"
+          echo "$(date "+%F %H:%M:%S") | Install GitHub CLI | START"
+          sudo apt-get install -y gh
+          echo "$(date "+%F %H:%M:%S") | Install GitHub CLI | END"
+
+      - name: Check Branch Protection
+        uses: jordandarlington/actions-workflow-test-core/actions/validate-branch@v0.1.10
+        with:
+          github-token: ${{ secrets.ACTIONS_TOKEN }}
+          org-name: jordandarlington
+          repo-name: actions-workflow-test
+          base-branch: ${{ github.event.pull_request.base.ref }}
 
   validate-build:
     needs: validate-branch
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Check Out Code
+        uses: actions/checkout@v4
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:

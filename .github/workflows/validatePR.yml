@@ -39,7 +39,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Check Out Code
+        uses: actions/checkout@v4
+
+      - name: Install GitHub CLI
+        run: |
+          echo "$(date "+%F %H:%M:%S") | Install GitHub CLI | START"
+          sudo apt-get install -y gh
+          echo "$(date "+%F %H:%M:%S") | Install GitHub CLI | END"
+
       - name: Check Branch Protection
         uses: jordandarlington/actions-workflow-test-core/actions/validate-branch@v0.1.6
         with:
@@ -53,14 +61,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out the code
+      - name: Check Out Code
         uses: actions/checkout@v4
-
-      - name: Install GitHub CLI
-        run: |
-          echo "$(date "+%F %H:%M:%S") | Install GitHub CLI | START"
-          sudo apt-get install -y gh
-          echo "$(date "+%F %H:%M:%S") | Install GitHub CLI | END"
 
       - name: Set up Node.js
         uses: actions/setup-node@v4

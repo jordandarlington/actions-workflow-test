@@ -15,24 +15,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-      - name: Check Pull Request Draft Status
-        run: |
-          echo "$(date "+%F %H:%M:%S") | Check Pull Request Draft Status | START"
-          if [ ${{ github.event.pull_request.draft }} == true ]; then
-            echo "$(date "+%F %H:%M:%S") | Check Pull Request Draft Status | FAILURE"
-            exit 1;
-          fi
-          echo "$(date "+%F %H:%M:%S") | Check Pull Request Draft Status | END"
+      - name: Check Out Code
+        uses: actions/checkout@v4
 
-      - name: Check Pull Request Description
-        run: |
-          echo "$(date "+%F %H:%M:%S") | Check Pull Request Description | START"
-          if [ -z "${{ github.event.pull_request.body }}" ]; then
-            echo "$(date "+%F %H:%M:%S") | Check Pull Request Description | FAILURE"
-            exit 1;
-          fi
-          echo "$(date "+%F %H:%M:%S") | Check Pull Request Description | END"
+      - name: Validate Pull Request
+        uses: jordandarlington/actions-workflow-test-core/actions/validate-pull-request@v0.1.11
 
   validate-branch:
     needs: validate-pull-request
@@ -42,14 +29,8 @@ jobs:
       - name: Check Out Code
         uses: actions/checkout@v4
 
-      - name: Install GitHub CLI
-        run: |
-          echo "$(date "+%F %H:%M:%S") | Install GitHub CLI | START"
-          sudo apt-get install -y gh
-          echo "$(date "+%F %H:%M:%S") | Install GitHub CLI | END"
-
       - name: Check Branch Protection
-        uses: jordandarlington/actions-workflow-test-core/actions/validate-branch@v0.1.10
+        uses: jordandarlington/actions-workflow-test-core/actions/validate-branch@v0.1.11
         with:
           github-token: ${{ secrets.ACTIONS_TOKEN }}
           org-name: jordandarlington
@@ -63,11 +44,6 @@ jobs:
     steps:
       - name: Check Out Code
         uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
 
       - name: Install Dependencies
         run: |

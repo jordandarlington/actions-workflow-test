@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Validate Pull Request
-        uses: jordandarlington/actions-workflow-test-core/actions/validate-pull-request@v0.1.12
+        uses: jordandarlington/actions-workflow-test-core/actions/validate-pull-request@v0.1.13
 
   validate-branch:
     needs: validate-pull-request
@@ -30,7 +30,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Check Branch Protection
-        uses: jordandarlington/actions-workflow-test-core/actions/validate-branch@v0.1.12
+        uses: jordandarlington/actions-workflow-test-core/actions/validate-branch@v0.1.13
         with:
           github-token: ${{ secrets.ACTIONS_TOKEN }}
           org-name: jordandarlington

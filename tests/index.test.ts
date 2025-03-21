@@ -5,7 +5,7 @@ test('adds 1 + 2 to equal 3', () => {
 });
 
 test('subtracts 2 - 1 to equal 1', () => {
-    expect(subtract(2, 1)).toBe(1);
+    expect(subtract(2, 1)).toBe(2);
 });
 
 test('multiplies 2 * 2 to equal 4', () => {

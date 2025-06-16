@@ -62,3 +62,12 @@ jobs:
           echo "$(date "+%F %H:%M:%S") | Run Tests | START"
           npm test
           echo "$(date "+%F %H:%M:%S") | Run Tests | END"
+      
+      - name: Lock Branch
+        if: ${{ failure() }}
+        uses: jordandarlington/actions-workflow-test-core/actions/lock-branch@v0.1.15
+        with:
+          github-token: ${{ secrets.ACTIONS_TOKEN }}
+          org-name: jordandarlington
+          repo-name: actions-workflow-test
+          branch-name: ${{ github.event.pull_request.base.ref }}
